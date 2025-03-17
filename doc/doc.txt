@@ -1,0 +1,32 @@
+*documentation
+
+at the beginning datatype
+for all information -> get and set
+round brackets are mandatory -> methods
+
+
+yellow alien - class
+
+wrench is for properties
+
+
+cubes - something happens
+
+
+symatnic - contend errors Computer does what you write not what you want
+
+
+Homework
+
+try the Console. classes at home
+
+
+Write does not enter a new line
+Write line do enters a new line
+
+
+
+
+
+
+
