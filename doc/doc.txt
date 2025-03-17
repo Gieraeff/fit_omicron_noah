@@ -21,9 +21,16 @@ Homework
 try the Console. classes at home
 
 
-Write does not enter a new line
-Write line do enters a new line
+Write does not enter a new line -> line break
+Write line do enters a new line ->> line break
 
+Write line:
+\n = new line
+\t = tab 
+
+
+declaration for a memory place without an value
+initializeput the value to the memory place
 
 
 
