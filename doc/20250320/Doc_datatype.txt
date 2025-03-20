@@ -1,0 +1,6 @@
+an empty string is not the same as null
+
+empty 
+
+name = string.Empty; is the same like name = "";
+

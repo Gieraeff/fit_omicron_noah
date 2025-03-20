@@ -32,6 +32,9 @@ Write line:
 declaration for a memory place without an value
 initializeput the value to the memory place
 
+never use float
+
+
 
 
 
