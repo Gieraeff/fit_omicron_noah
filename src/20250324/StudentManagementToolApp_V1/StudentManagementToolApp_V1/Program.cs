@@ -8,8 +8,67 @@ namespace StudentManagementToolApp_V1
 {
     class Program
     {
+        /*
+         * Write an application with which student data can be managed. Following features should be implemented:
+
+- Console application
+- Clear user guidance through formatting and color coding (e.g.: color inputs)
+- Student data should be able to be entered
+- Participant data should be displayed on the screen
+- All entries should be implemented in an exception free manner
+
+a) Initial implementation for one participant only
+        -Name
+        -Birthday
+        -Adress ( postal code, city)
+         */
         static void Main(string[] args)
         {
+            string name;
+            DateTime birthday = ;
+            string userinput;           
+            int postalCode = 0;
+            string city;
+        
+
+
+            Console.Clear();
+            Console.WriteLine("please enter your full Name: ");
+            name = Console.ReadLine();
+
+            Console.WriteLine("Hello, " + name + " please enter your birthday as dd.mm.yyyy");
+            userinput = Console.ReadLine();
+
+            try
+            {
+                birthday = DateTime.Parse(userinput);
+            }
+            catch
+            {
+                Console.WriteLine("error wrong data");
+            }
+
+            Console.WriteLine("great, can you please enter ");
+            userinput = Console.ReadLine();
+
+
+            try
+            {
+                postalCode = int.Parse(userinput);
+            }
+            catch
+            {
+                Console.WriteLine("error wrong data");
+            }
+
+
+            Console.WriteLine("cool, which city is this exactly?");
+            city = Console.ReadLine();
+
+            Console.WriteLine("your full Name:\t\t" +  name);
+            Console.WriteLine("your birthday:\t" + birthday);
+            Console.WriteLine("your postalcode:\t" + postalCode);
+            Console.WriteLine("and your city:\t\t" + city);
 
 
         }
