@@ -1,0 +1,6 @@
+documentation
+
+Git:
+normaly you don t commit into the main branche its like the release versio
+
+Gitflow workflow

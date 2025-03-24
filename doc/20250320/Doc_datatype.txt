@@ -4,3 +4,25 @@ empty
 
 name = string.Empty; is the same like name = "";
 
+string manipulator find like string. ...
+
+
+
+
+-----------
+
+Operators
+
+
+
+
+
+
+
+
+---------------
+ExceptionHandling
+
+with ex.Stacktrace you can read from bottom to top the error (not for users to see)
+just to find error to debug
+
