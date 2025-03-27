@@ -25,7 +25,7 @@ a) Initial implementation for one participant only
         static void Main(string[] args)
         {
             string name;
-            DateTime birthday = ;
+            DateTime birthday = new DateTime();
             string userinput;           
             int postalCode = 0;
             string city;
@@ -33,6 +33,10 @@ a) Initial implementation for one participant only
 
 
             Console.Clear();
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            
+
             Console.WriteLine("please enter your full Name: ");
             name = Console.ReadLine();
 
@@ -48,7 +52,7 @@ a) Initial implementation for one participant only
                 Console.WriteLine("error wrong data");
             }
 
-            Console.WriteLine("great, can you please enter ");
+            Console.WriteLine("great, can you please enter you postal code:");
             userinput = Console.ReadLine();
 
 
@@ -65,10 +69,13 @@ a) Initial implementation for one participant only
             Console.WriteLine("cool, which city is this exactly?");
             city = Console.ReadLine();
 
-            Console.WriteLine("your full Name:\t\t" +  name);
-            Console.WriteLine("your birthday:\t" + birthday);
-            Console.WriteLine("your postalcode:\t" + postalCode);
-            Console.WriteLine("and your city:\t\t" + city);
+            Console.WriteLine();
+            Console.WriteLine("\tso this is your data:");
+            Console.WriteLine();
+            Console.WriteLine("\tyour full Name:\t\t" +  name);
+            Console.WriteLine("\tyour birthday:\t\t" + birthday.ToString("dd/MM/yyyy"));
+            Console.WriteLine("\tyour postalcode:\t" + postalCode);
+            Console.WriteLine("\tand your city:\t\t" + city);
 
 
         }
