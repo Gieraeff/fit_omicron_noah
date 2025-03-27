@@ -39,49 +39,58 @@ a) Initial implementation for one participant only
 
             Console.WriteLine("please enter following information");
             Console.WriteLine();
-            Console.Write("\tplease enter your full Name:            ");
+            Console.Write("\tplease enter your full Name:               ");
             Console.ForegroundColor= ConsoleColor.Green;
             name = Console.ReadLine();
+
+            do
+            {
+                Console.ResetColor();
+                Console.Write("\tplease enter your birthday as dd.mm.yyyy:  ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                userinput = Console.ReadLine();
+
+
+                try
+                {
+                    birthday = DateTime.Parse(userinput);
+                    userInputIsInvalid = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("ERROR: " + ex.Message);
+
+                    userInputIsInvalid = true;
+                } 
+            } 
+            while (userInputIsInvalid);
+
+
+            do
+            {
+                Console.ResetColor();
+                Console.Write("\tcan you please enter you postal code:      ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                userinput = Console.ReadLine();
+
+                try
+                {
+                    postalCode = int.Parse(userinput);
+                    userInputIsInvalid = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("ERROR: " + ex.Message);
+                    userInputIsInvalid = true;
+                } 
+            }
+            while (userInputIsInvalid);
+
+
             Console.ResetColor();
-
-
-            Console.Write("\tplease enter your birthday as dd.mm.yyyy");
-            Console.ForegroundColor = ConsoleColor.Green;
-            userinput = Console.ReadLine();
-            
-
-            try
-            {
-                birthday = DateTime.Parse(userinput);
-            }
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("ERROR: " + ex.Message);
-                
-                userInputIsInvalid=true;
-            }
-
-
-            Console.ResetColor();
-            Console.Write("\tcan you please enter you postal code:");
-            Console.ForegroundColor = ConsoleColor.Green;
-            userinput = Console.ReadLine();
-            
-
-            try
-            {
-                postalCode = int.Parse(userinput);
-            }
-            catch(Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("error wrong data" + ex.Message);
-                userInputIsInvalid = true;
-            }
-
-            Console.ResetColor();
-            Console.Write("\tcool, which city is this exactly?");
+            Console.Write("\tcool, which city is this exactly?:         ");
             Console.ForegroundColor = ConsoleColor.Green;
             city = Console.ReadLine();
             Console.ResetColor();
@@ -97,11 +106,6 @@ a) Initial implementation for one participant only
                 Console.WriteLine("\tyour full Name:\t\t" + name);
                 Console.WriteLine("\tyour birthday:\t\t" + birthday.ToString("dd/MM/yyyy"));
                 Console.WriteLine("\tyour adress:\t\t" + postalCode.ToString() + " " + city);
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("you monkey, the input is invalid");
             }
             
 
