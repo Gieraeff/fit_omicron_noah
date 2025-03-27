@@ -4,3 +4,6 @@ Git:
 normaly you don t commit into the main branche its like the release versio
 
 Gitflow workflow
+
+doubel && is just to safe time
+if the first failed it will jump just
