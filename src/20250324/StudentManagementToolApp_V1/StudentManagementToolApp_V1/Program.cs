@@ -47,9 +47,12 @@ a) Initial implementation for one participant only
             {
                 birthday = DateTime.Parse(userinput);
             }
-            catch
+            catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("error wrong data");
+                Console.WriteLine(ex.Message);
+                return;
             }
 
             Console.WriteLine("great, can you please enter you postal code:");
@@ -60,9 +63,12 @@ a) Initial implementation for one participant only
             {
                 postalCode = int.Parse(userinput);
             }
-            catch
+            catch(Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("error wrong data");
+                Console.WriteLine(ex.Message);
+                return;
             }
 
 
