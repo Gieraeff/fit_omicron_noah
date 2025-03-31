@@ -14,16 +14,16 @@ namespace StudentManagement_Array_Homework
         {
 
             string userInput = string.Empty;
-            string name = string.Empty;
+            //string name = string.Empty;
             int userAnzahl = 0;
             bool userInputinValid = false;
-            DateTime birthday = DateTime.MinValue;
+            //DateTime birthday = DateTime.MinValue;
 
 
-            string[] names;
-            DateTime[] birthdays;
-            int[] postalcodes;
-            string[] adresses;
+            string[] nameList;
+            DateTime[] birthdayList;
+            int[] postalcodeList;
+            string[] adressList;
 
 
             // user anzahl nachfragen und umwandeln
@@ -48,47 +48,43 @@ namespace StudentManagement_Array_Homework
             Console.Clear();
 
             // Arrays auf die passende userAnzahl größe einfügen
-            names = new string[userAnzahl];
-            birthdays = new DateTime[userAnzahl];
-            postalcodes = new int[userAnzahl];
-            adresses = new string[userAnzahl];
+            nameList = new string[userAnzahl];
+            birthdayList = new DateTime[userAnzahl];
+            postalcodeList = new int[userAnzahl];
+            adressList = new string[userAnzahl];
 
 
-            for (int i = 0; i < names.Length; i++)
+            for (int i = 0; i < nameList.Length; i++)
             {
-                // für die lesbar keit ++i damit der 1 student auch bei 1 anfängt danach i-- um die korrekte anwedung der Variable zu haben
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("bitte gib folgende daten vom " + ++i + "ten Studenten ein\t");
-                i--;
+                // für die lesbarkeit ++i damit der 1 student auch bei 1 anfängt danach i-- um die korrekte anwedung der Variable zu haben
+                Console.ResetColor();
+                Console.WriteLine("bitte gib folgende daten vom " + (i+1) + "ten Studenten ein\t");
 
                 // name anfragen
                 Console.Write("\tName:                     ");
                 Console.ForegroundColor = ConsoleColor.Green;
-                names[i] = Console.ReadLine();
-                Console.ForegroundColor = ConsoleColor.White;
-
-                // geburtstag nachfragen und diesen von string in DateTime umwandeln
+                nameList[i] = Console.ReadLine();
                 
 
+                // geburtstag nachfragen und diesen von string in DateTime umwandeln
 
                 do
                 {
-                    Console.Write("\tGeburtstag(MM.dd.yyyy):   ");
+                    Console.ResetColor();
+                    Console.Write("\tGeburtstag(dd.MM.yyyy):   ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     userInput = Console.ReadLine();
                     Console.ForegroundColor = ConsoleColor.White;
                     
                         try
                         {
-                            birthday = DateTime.Parse(userInput);
-                            birthdays[i] = birthday;
+                            birthdayList[i] = DateTime.Parse(userInput);
                             userInputinValid = false;
                         }
                         catch (Exception ex)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("ERROR: " + ex.Message);
-                            Console.ForegroundColor = ConsoleColor.White;
                             userInputinValid = true;
                         } 
 
@@ -97,48 +93,48 @@ namespace StudentManagement_Array_Homework
 
                 do
                 {
+                    Console.ResetColor();
                     //postal code eintragen und diesen von String in ein inteter umwandeln bei fehler eingabe eine exception
                     Console.Write("\tPostal Code:              ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     userInput = Console.ReadLine();
-                    Console.ForegroundColor = ConsoleColor.White;
-
+                    
 
                         try
                         { 
-                            postalcodes[i] = int.Parse(userInput);
+                            postalcodeList[i] = int.Parse(userInput);
                             userInputinValid = false;
                         }
                         catch (Exception ex)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("ERROR: " + ex.Message);
-                            Console.ForegroundColor = ConsoleColor.White;
                             userInputinValid = true;
 
                         } 
 
                 } while (userInputinValid);
 
+                Console.ResetColor();
                 //Adrese  an stelle i eingeben
                 Console.Write("\tAdress:                   ");
                 Console.ForegroundColor = ConsoleColor.Green;
-                adresses[i] = Console.ReadLine();
-                Console.ForegroundColor = ConsoleColor.White;
+                adressList[i] = Console.ReadLine();
+                
 
             }
 
-
+            Console.ResetColor();
             // daten ausgeben die eingetragen wurden
             Console.WriteLine("Das sind die Daten:");
-            for (int i = 0; i < names.Length; i++)
+            for (int i = 0; i < nameList.Length; i++)
             {
-                Console.WriteLine("Student " + ++i + ":");
-                i--;
-                Console.WriteLine("Name: " + names[i]);
-                Console.WriteLine("Birthday: " + birthdays[i].ToString("dd /MM/yyyy"));
-                Console.WriteLine("Adress: " + adresses + postalcodes[i].ToString());
+                Console.WriteLine("Student " + (i+1) + ":");
+                Console.WriteLine("Name: " + nameList[i]);
+                Console.WriteLine("Birthday: " + birthdayList[i].ToString("dd/MM/yyyy"));
+                Console.WriteLine("Adress: " + adressList[i].ToString() + " " + postalcodeList[i].ToString());
                 Console.WriteLine();
+
 
             }
     
