@@ -26,8 +26,23 @@ namespace MethodBasics
             PrintColoredMessage("what the fuck", ConsoleColor.Green);
 
             PrintMessage("what the fuck");
+
+            int sum = 0;
+
+            sum = Addition(9, 10);
+
+            Console.WriteLine(sum);
         }
         
+        static int Addition(int number1, int number2)
+        {
+            int result = 0;
+            result = number1 + number2;
+            
+            return result; 
+        }
+
+
         static void PrintColoredMessage(string message, ConsoleColor messageColor)
         {
             ConsoleColor oldColor = Console.ForegroundColor;
