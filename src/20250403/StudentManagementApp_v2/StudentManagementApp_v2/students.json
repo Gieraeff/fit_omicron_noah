@@ -1,0 +1,11 @@
+{
+	"studentlist":
+	[
+		{
+			"name": "Max",
+			"city": "Musterort",
+			"zip": 5844,
+			"birthdate": "19800215"
+		}
+	]
+}

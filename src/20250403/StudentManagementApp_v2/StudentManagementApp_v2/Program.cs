@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Dynamic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace StudentManagementApp_v2
 
             Student[] studentList;
 
+            
+
             // get count of students from user
             studentCount = GetInt("\nPlease enter count of Students: ");
 
@@ -33,16 +36,53 @@ namespace StudentManagementApp_v2
 
         private static void WriteStudentData(Student[] studentList, string filename)
         {
+            string jsonContent = string.Empty;
 
-                for (int i = 0; i < studentList.Length;i++)
-                {
-                    File.AppendAllText(filename, "\nStudent Data");
-                    File.AppendAllText(filename, "\n" + studentList[i].Name);
-                    File.AppendAllText(filename, "\n" + studentList[i].Birthday.ToString("dd/MM/yyyy"));
-                    File.AppendAllText(filename, "\n" + studentList[i].City + " " + studentList[i].PostalCode +"\n");
+            //create json content
+            jsonContent = "{ \"studentList\":[";
 
-                }
+            // create json content for each student
+            foreach (Student student in studentList)
+            {
+                string studentJsonData = ConvertToJson(student);
+                jsonContent += studentJsonData + ",";
+            }
+
+            //remove the last coma
+            jsonContent = jsonContent.Substring(0, jsonContent.Length - 1);
+
+            //add closing brackets
+            jsonContent += "]}";
+
+
+            //write json content into a file
+            File.WriteAllText(filename, jsonContent);
+
+
+                // my solution for the homework - this writes the data in a Json
+                //for (int i = 0; i < studentList.Length; i++)
+                //{
+                //    File.AppendAllText(filename, "\nStudent Data");
+                //    File.AppendAllText(filename, "\n" + studentList[i].Name);
+                //    File.AppendAllText(filename, "\n" + studentList[i].Birthday.ToString("dd/MM/yyyy"));
+                //    File.AppendAllText(filename, "\n" + studentList[i].City + " " + studentList[i].PostalCode + "\n");
+                //}
+
             Console.WriteLine("Data got safed in " + filename);
+        }
+
+        private static string ConvertToJson(Student studentToConvert)
+        {
+            string json = "{";
+
+            json += $"\"name\": \"{ studentToConvert.Name}\",";
+            json += $"\"City\": \"{studentToConvert.City}\",";
+            json += $"\"zip\": {studentToConvert.PostalCode},";
+
+            json += $"\"birthdate\": \"{studentToConvert.Birthday.ToString("yyyy-MM-dd")}\"";
+            json += "}";
+
+            return json;
         }
 
         private static Student[] GetStudentData(int countOfStudents)
@@ -85,13 +125,13 @@ namespace StudentManagementApp_v2
             }
         }
 
-        private static string GetString(string inputPrompt) 
+        private static string GetString(string inputPrompt)
         {
             string userInput = string.Empty;
 
             Console.Write(inputPrompt);
             Console.ForegroundColor = ConsoleColor.Green;
-            
+
             userInput = Console.ReadLine();
             Console.ResetColor();
 
@@ -141,7 +181,7 @@ namespace StudentManagementApp_v2
                 Console.Write(inputPrompt);
                 Console.ForegroundColor = ConsoleColor.Green;
                 userInput = Console.ReadLine();
-                
+
                 try
                 {
                     intValue = int.Parse(userInput);
