@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,16 @@ namespace StudentManagementApp_v2
 
         private static void WriteStudentData(Student[] studentList, string filename)
         {
-            //homework
+
+                for (int i = 0; i < studentList.Length;i++)
+                {
+                    File.AppendAllText(filename, "\nData Student");
+                    File.AppendAllText(filename, "\n" + studentList[i].Name);
+                    File.AppendAllText(filename, "\n" + studentList[i].Birthday.ToString("dd/MM/yyyy"));
+                    File.AppendAllText(filename, "\n" + studentList[i].City + "" + studentList[i].PostalCode +"\n");
+
+                }
+            Console.WriteLine("Daten Gespeicher");
         }
 
         private static Student[] GetStudentData(int countOfStudents)
