@@ -36,13 +36,13 @@ namespace StudentManagementApp_v2
 
                 for (int i = 0; i < studentList.Length;i++)
                 {
-                    File.AppendAllText(filename, "\nData Student");
+                    File.AppendAllText(filename, "\nStudent Data");
                     File.AppendAllText(filename, "\n" + studentList[i].Name);
                     File.AppendAllText(filename, "\n" + studentList[i].Birthday.ToString("dd/MM/yyyy"));
-                    File.AppendAllText(filename, "\n" + studentList[i].City + "" + studentList[i].PostalCode +"\n");
+                    File.AppendAllText(filename, "\n" + studentList[i].City + " " + studentList[i].PostalCode +"\n");
 
                 }
-            Console.WriteLine("Daten Gespeicher");
+            Console.WriteLine("Data got safed in " + filename);
         }
 
         private static Student[] GetStudentData(int countOfStudents)
