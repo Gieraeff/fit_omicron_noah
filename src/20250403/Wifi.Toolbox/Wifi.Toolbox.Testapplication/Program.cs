@@ -14,6 +14,8 @@ namespace Wifi.Toolbox.Testapplication
             int age = ConsoleTools.GetInt("please enter your age");
 
             Console.WriteLine($"this is your {age}");
+
+            
         }
     }
 }

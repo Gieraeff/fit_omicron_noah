@@ -1,37 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
+using TextToAsciiArt;
 
 namespace Wifi.Toolbox.Tools
 {
     public abstract class ConsoleTools
     {
+        public static void CreateHeader(string headerText, char textFillChar)
+        {
+            IArtWriter writer = new ArtWriter();
+
+            var settings = new ArtSetting
+            {
+                ConsoleSpeed = 60,
+                IsBreakSpace = false,
+                Text = textFillChar.ToString(),
+                BgText = " "
+            };
+            writer.WriteConsole(headerText, settings);
+        }
+
+        public static void CreateHeader(string headerText)
+        {
+            CreateHeader(headerText, '|');
+        }
+
         public static int GetInt(string inputPrompt)
         {
             string userInput = string.Empty;
             int intValue = 0;
-            bool userInputinValid = false;
+            bool userInputIsInvalid = false;
 
             do
             {
                 Console.ResetColor();
                 Console.Write(inputPrompt);
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 userInput = Console.ReadLine();
 
                 try
                 {
                     intValue = int.Parse(userInput);
-                    userInputinValid = false;
+                    userInputIsInvalid = false;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("ERROR: " + ex.Message);
-                    userInputinValid = true;
+                    userInputIsInvalid = true;
                 }
-            } while (userInputinValid);
+            }
+            while (userInputIsInvalid);
 
             Console.ResetColor();
 
