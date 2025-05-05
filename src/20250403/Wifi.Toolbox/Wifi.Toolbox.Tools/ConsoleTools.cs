@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Wifi.Toolbox.Tools
 {
+    public delegate void OperationErrorPosition(Exception exception);
+
     public abstract class ConsoleTools
     {
         //public static void CreateHeader(string headerText, char textFillChar)
@@ -28,66 +31,6 @@ namespace Wifi.Toolbox.Tools
         //    CreateHeader(headerText, '*');
         //}
 
-        public static int GetInt(string inputPrompt)
-        {
-            string userInput = string.Empty;
-            int intValue = 0;
-            bool userInputinValid = false;
-
-            do
-            {
-                Console.ResetColor();
-                Console.Write(inputPrompt);
-                Console.ForegroundColor = ConsoleColor.Green;
-                userInput = Console.ReadLine();
-
-                try
-                {
-                    intValue = int.Parse(userInput);
-                    userInputinValid = false;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("ERROR: " + ex.Message);
-                    userInputinValid = true;
-                }
-            } while (userInputinValid);
-
-            Console.ResetColor();
-
-            return intValue;
-        }
-
-        public static double GetDouble(string inputPrompt)
-        {
-            string userInput = string.Empty;
-            double doubleValue = 0.0;
-            bool userInputIsInvalid = false;
-
-            do
-            {
-                Console.ResetColor();
-                Console.Write(inputPrompt);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                userInput = Console.ReadLine();
-
-                try
-                {
-                    doubleValue = double.Parse(userInput);
-                    userInputIsInvalid = false;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("ERROR: " + ex.Message);
-                    userInputIsInvalid = true;
-                }
-            }
-            while (userInputIsInvalid);
-
-            Console.ResetColor();
-
-            return doubleValue;
-        }
 
         public static string GetString(string inputPrompt)
         {
@@ -102,35 +45,83 @@ namespace Wifi.Toolbox.Tools
             return userInput;
         }
 
-        public static DateTime GetDateTime(string inputPrompt)
+        public static T GetInputValue<T>(string inputPrompt) where T : struct
+        {
+            return GetInputValue<T>(inputPrompt);
+        }
+
+        public static T GetInputValue<T>(string inputPrompt, ErrorMessageHandler exceptionDrawer) where T : struct
         {
             string userInput = string.Empty;
-            DateTime dateTimeValue = DateTime.MinValue;
-            bool userInputIsInvalid = false;
+            T userValue = default(T);
+            bool userInputinValid = false;
+
+            Type inputType = typeof(T);
 
             do
             {
                 Console.ResetColor();
                 Console.Write(inputPrompt);
-                Console.ForegroundColor = ConsoleColor.Yellow;
+
+                var lastInputPosition = new CursorPositionDto 
+                { 
+                    LeftPos = Console.CursorLeft,
+                    TopPos = Console.CursorTop 
+                };
+
+
+                Console.ForegroundColor = ConsoleColor.Green;
                 userInput = Console.ReadLine();
 
                 try
                 {
-                    dateTimeValue = DateTime.Parse(userInput);
-                    userInputIsInvalid = false;
+                    var parseMethodInfo = inputType.GetMethod("Parse", new[] { typeof(string) });
+                    if (parseMethodInfo == null)
+                    {
+                       throw new NotImplementedException($" Type {inputType.Name} doesn't support Parse().");
+                    }
+
+                    userValue = (T)parseMethodInfo.Invoke(null, new object[] { userInput });
+
+                    //userValue = int.Parse(userInput);
+                    userInputinValid = false;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("ERROR: " + ex.Message);
-                    userInputIsInvalid = true;
+                    if(exceptionDrawer != null)
+                    {
+                        exceptionDrawer(ex,lastInputPosition); 
+                    }
+                    userInputinValid = true;
                 }
-            }
-            while (userInputIsInvalid);
+            } while (userInputinValid);
 
             Console.ResetColor();
 
-            return dateTimeValue;
+            return userValue;
+        }
+
+
+        public static void ErrorMessageBottom(Exception ex,CursorPositionDto cursorPosition)
+        {
+            Console.SetCursorPosition(0, 15);
+            Console.WriteLine("Error:" + ex.Message);
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine("\tERROR: " + ex.InnerException);
+            }
+        }
+
+        public static void ErrorMessageDefault(Exception ex)
+        {
+            Console.WriteLine("ERROR: " + ex.Message);
+
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine("\tERROR: " + ex.InnerException);
+            }
+
+
         }
 
     }
