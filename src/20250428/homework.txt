@@ -1,0 +1,7 @@
+replace all the wifi tools with a generic class
+
+parse can not be used easily - hint: try to use reflection
+
+generic method to rad from different types from the console
+
+init, string,double, bool, datetime,... just the normal not like radio
