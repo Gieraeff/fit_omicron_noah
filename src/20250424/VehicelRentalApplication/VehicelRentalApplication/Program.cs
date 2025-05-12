@@ -11,11 +11,11 @@ namespace VehicelRentalApplication
     {
         static void Main(string[] args)
         {
-            var myradio = new Radio("BomBox");
+            //var myradio = new Radio();
 
             
-            myradio.ChangeState(Powerstate.Poweron);
-            myradio.Play();
+            //myradio.ChangeState(Powerstate.Poweron);
+            //myradio.Play();
 
 
             var mustang = new Car("Mustang shelby gt500", "Ford", 350, 250,5);
@@ -25,18 +25,20 @@ namespace VehicelRentalApplication
             var vehicleList = new Vehicle[]
             {
                 mustang,
-                new Vehicle("Demo Vehicle","Brand New",111,99),
-                new Vehicle("Audi urguattro","Audi",220,101),
+                new Car("Demo Vehicle","Brand New",111,99,5),
+                new Car("Audi urguattro","Audi",220,101,2),
                 new Car("Octavia 4x4","Skoda",150,320,5),
                 new Scooter("gt3 pro","Segway",10,75),
                 myScooter,
             };
 
-            foreach (var vehicle in vehicleList)
+            foreach (var car in vehicleList)
             {
-                vehicle.SpeedUp(20);
-                Console.WriteLine(vehicle.GetInfoString());
+                car.SpeedUp(20);
+                Console.WriteLine(car.GetInfoString());
+                Console.WriteLine();
             }
+
 
             myScooter.chargscooter(25);
 
