@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Security.Cryptography;
-using TextToAsciiArt;
-
 namespace Wifi.Toolbox.Tools
 {
     public abstract class ConsoleTools
     {
-        public static void CreateHeader(string headerText, char textFillChar)
-        {
-            IArtWriter writer = new ArtWriter();
+        //public static void CreateHeader(string headerText, char textFillChar)
+        //{
+        //    IArtWriter writer = new ArtWriter();
 
-            var settings = new ArtSetting
-            {
-                ConsoleSpeed = 60,
-                IsBreakSpace = false,
-                Text = textFillChar.ToString(),
-                BgText = " "
-            };
-            writer.WriteConsole(headerText, settings);
-        }
+        //    var settings = new ArtSetting
+        //    {
+        //        ConsoleSpeed = 60,
+        //        IsBreakSpace = false,
+        //        Text = textFillChar.ToString(),
+        //        BgText = " "
+        //    };
+        //    writer.WriteConsole(headerText, settings);
+        //}
 
-        public static void CreateHeader(string headerText)
-        {
-            CreateHeader(headerText, '|');
-        }
+        //public static void CreateHeader(string headerText)
+        //{
+        //    CreateHeader(headerText, '|');
+        //}
 
         public static int GetInt(string inputPrompt)
         {
@@ -129,6 +127,12 @@ namespace Wifi.Toolbox.Tools
             Console.ResetColor();
 
             return dateTimeValue;
+        }
+
+        public static T GetData<T>(T input)
+        {
+
+            return input;
         }
 
     }
