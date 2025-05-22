@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MongoRepositoryTest.cs" />
+    <Compile Include="MongoDBDriverTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +53,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.Core\Wifi.PlaylistEditor.Core.csproj">
+      <Project>{10E5370F-D18A-407C-B0A7-4DD3834CA9B1}</Project>
+      <Name>Wifi.PlaylistEditor.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wifi.PlaylistEditor.Repositoriers\Wifi.PlaylistEditor.Repositoriers.csproj">
       <Project>{72d30191-1354-4837-87a9-3a9b74ab5992}</Project>
       <Name>Wifi.PlaylistEditor.Repositoriers</Name>
