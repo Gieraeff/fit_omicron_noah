@@ -41,14 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\MongoRepository.cs" />
+    <Compile Include="DataBaseRepositorie.cs" />
+    <Compile Include="Database\Extensions.cs" />
+    <Compile Include="Database\MongoDBDriver.cs" />
     <Compile Include="Database\Person.cs" />
+    <Compile Include="Database\PlaylistEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver">
       <Version>2.19.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.Core\Wifi.PlaylistEditor.Core.csproj">
+      <Project>{10E5370F-D18A-407C-B0A7-4DD3834CA9B1}</Project>
+      <Name>Wifi.PlaylistEditor.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FileTypes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

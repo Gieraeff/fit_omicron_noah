@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using Wifi.PlaylistEditor.Core;
 
 
 namespace Wifi.PlaylistEditor.Repositoriers.Database
 {
 
-    public class MongoRepository<T> where T : class
+    public class MongoDBDriver<T> : IDataBaseDriver<T> where T : class
     {
         private readonly IMongoCollection<T> _collection;
 
-        public MongoRepository(string connectionString, string databaseName, string collectionName)
+        public MongoDBDriver(string connectionString, string databaseName, string collectionName)
         {
             if (string.IsNullOrWhiteSpace(connectionString))
                 throw new ArgumentNullException(nameof(connectionString));
