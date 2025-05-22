@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Reposit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Repositoriers.Test", "Wifi.PlaylistEditor.Repositoriers.Test\Wifi.PlaylistEditor.Repositoriers.Test.csproj", "{DDB1A2C4-3755-4BF1-A3C8-5EF513C5D0D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Core.PlaylistItems", "Wifi.PlaylistEditor.Core.PlaylistItems\Wifi.PlaylistEditor.Core.PlaylistItems.csproj", "{4DF1F007-6A83-4FDE-8361-0AD44AA082B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Core.Factories", "Wifi.PlaylistEditor.Core.Factories\Wifi.PlaylistEditor.Core.Factories.csproj", "{7EB185A8-30AD-412A-935D-872125818AB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlisteditor", "Wifi.Playlisteditor\Wifi.Playlisteditor.csproj", "{5BA6F996-4941-4A1C-8E3B-DA489219C283}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +39,18 @@ Global
 		{DDB1A2C4-3755-4BF1-A3C8-5EF513C5D0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDB1A2C4-3755-4BF1-A3C8-5EF513C5D0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDB1A2C4-3755-4BF1-A3C8-5EF513C5D0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DF1F007-6A83-4FDE-8361-0AD44AA082B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF1F007-6A83-4FDE-8361-0AD44AA082B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF1F007-6A83-4FDE-8361-0AD44AA082B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF1F007-6A83-4FDE-8361-0AD44AA082B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB185A8-30AD-412A-935D-872125818AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB185A8-30AD-412A-935D-872125818AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB185A8-30AD-412A-935D-872125818AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB185A8-30AD-412A-935D-872125818AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BA6F996-4941-4A1C-8E3B-DA489219C283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BA6F996-4941-4A1C-8E3B-DA489219C283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BA6F996-4941-4A1C-8E3B-DA489219C283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BA6F996-4941-4A1C-8E3B-DA489219C283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

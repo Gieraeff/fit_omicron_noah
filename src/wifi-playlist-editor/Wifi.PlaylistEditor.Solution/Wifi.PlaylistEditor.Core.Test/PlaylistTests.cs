@@ -18,11 +18,72 @@ namespace Wifi.PlaylistEditor.Core.Test
         [SetUp]
         public void Init()
         {
-            _fixture = new Playlist("Gandalf", "NUnit Test");
+            _fixture = new Playlist("Gandalf", "NUnit Tests");
 
             _mockedItem1 = new Mock<IPlaylistItem>();
             _mockedItem2 = new Mock<IPlaylistItem>();
         }
+
+
+        [Test]
+        public void Clear()
+        {
+            //arrange
+            _fixture.Add(_mockedItem1.Object);
+            _fixture.Add(_mockedItem2.Object);
+            var oldCount = _fixture.ItemList.Count();
+
+            //act
+            _fixture.Clear();
+
+            //assert
+            Assert.That(oldCount, Is.EqualTo(2));
+            Assert.That(_fixture.ItemList.Count(), Is.EqualTo(0));
+        }
+
+
+        [Test]
+        public void Remove()
+        {
+            //arrange
+            _fixture.Add(_mockedItem1.Object);
+            var oldCount = _fixture.ItemList.Count();
+
+            //act
+            _fixture.Remove(_mockedItem1.Object);
+
+            //assert
+            Assert.That(_fixture.ItemList.Count(), Is.EqualTo(oldCount - 1));
+        }
+
+        //[Test]
+        //public void Remove_SpezificItemCheck()
+        //{
+        //    _mockedItem1.Setup(x => x.Title).Returns("Title 1");
+        //    _mockedItem2.Setup(x => x.Title).Returns("Title 2");
+
+        //    _fixture.Add(_mockedItem1.Object);
+        //    _fixture.Add(_mockedItem2.Object);
+
+        //    _fixture.Remove(_mockedItem1.Object);
+
+        //    Assert.
+        //}
+
+        [Test]
+        public void Remove_ItemIsNull()
+        {
+            //arrange
+            _fixture.Add(_mockedItem1.Object);
+            var oldCount = _fixture.ItemList.Count();
+
+            //act
+            _fixture.Remove(null);
+
+            //assert
+            Assert.That(_fixture.ItemList.Count(), Is.EqualTo(oldCount));
+        }
+
 
         [Test]
         public void Add()
@@ -30,14 +91,13 @@ namespace Wifi.PlaylistEditor.Core.Test
             //arrange
             var oldCount = _fixture.ItemList.Count();
 
-
             //act
             _fixture.Add(_mockedItem1.Object);
 
             //assert
             Assert.That(_fixture.ItemList.Count(), Is.EqualTo(oldCount + 1));
-
         }
+
 
         [Test]
         public void Add_ItemIsNull()
@@ -45,21 +105,35 @@ namespace Wifi.PlaylistEditor.Core.Test
             //arrange
             var oldCount = _fixture.ItemList.Count();
 
-
             //act
             _fixture.Add(null);
 
             //assert
             Assert.That(_fixture.ItemList.Count(), Is.EqualTo(oldCount));
-
         }
+
+
+        [Test]
+        public void ItemList_get()
+        {
+            //arrange            
+            _fixture.Add(_mockedItem1.Object);
+            _fixture.Add(_mockedItem2.Object);
+
+            //act
+            var result = _fixture.ItemList;
+
+            //assert
+            Assert.That(result.Count(), Is.EqualTo(2));
+        }
+
 
         [Test]
         public void Duration_get()
         {
-            //arrange 
+            //arrange            
             _mockedItem1.Setup(x => x.Duration).Returns(TimeSpan.FromSeconds(68));
-            _mockedItem2.Setup(x => x.Duration).Returns(TimeSpan.FromSeconds(32));
+            _mockedItem2.Setup(x => x.Duration).Returns(TimeSpan.FromSeconds(40));
 
             _fixture.Add(_mockedItem1.Object);
             _fixture.Add(_mockedItem2.Object);
@@ -68,8 +142,7 @@ namespace Wifi.PlaylistEditor.Core.Test
             var result = _fixture.Duration;
 
             //assert
-            Assert.That(result, Is.EqualTo(TimeSpan.FromSeconds(100)));
-
+            Assert.That(result, Is.EqualTo(TimeSpan.FromSeconds(108)));
         }
 
         [Test]
@@ -80,17 +153,16 @@ namespace Wifi.PlaylistEditor.Core.Test
             _fixture = new Playlist("Gandalf", "NUnit Tests", createDate);
 
             //act
-            var result = _fixture.Name;
+            var result = _fixture.CreatedAt;
 
             //assert
-            Assert.That(result, Is.EqualTo("Gandalf"));
+            Assert.That(result, Is.EqualTo(createDate));
         }
 
         [Test]
         public void Name_get()
         {
-            //arrange
-            _fixture = new Playlist("Gandalf", "NUnit Tests");
+            //arrange            
 
             //act
             var result = _fixture.Name;
@@ -102,8 +174,7 @@ namespace Wifi.PlaylistEditor.Core.Test
         [Test]
         public void Author_get()
         {
-            //arrange
-            _fixture = new Playlist("Gandalf", "NUnit Tests");
+            //arrange            
 
             //act
             var result = _fixture.Author;
