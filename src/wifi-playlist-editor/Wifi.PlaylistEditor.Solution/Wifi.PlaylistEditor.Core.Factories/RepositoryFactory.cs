@@ -8,7 +8,7 @@ using Wifi.PlaylistEditor.Repositories;
 
 namespace Wifi.PlaylistEditor.Core.Factories
 {
-    class RepositoryFactory : IPlaylistRepositoryFactory
+    public class RepositoryFactory : IPlaylistRepositoryFactory
     {
         private readonly IPlaylistFactory _playlistFactory;
         private readonly IPlaylistItemFactory _playlistItemFactory;
