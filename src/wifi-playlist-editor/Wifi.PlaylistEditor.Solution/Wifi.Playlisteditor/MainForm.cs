@@ -32,7 +32,8 @@ namespace Wifi.Playlisteditor
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //open the playlist data pop-up
+            //open the playlist data pop-up ==> REPLACE THIS!!
+            //define an interface
             var form = new NewPlaylistData();
             if (form.ShowDialog() != DialogResult.OK)
             {

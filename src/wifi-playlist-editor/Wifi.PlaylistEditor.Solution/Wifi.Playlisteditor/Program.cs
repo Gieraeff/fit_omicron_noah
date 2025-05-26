@@ -16,10 +16,11 @@ namespace Wifi.Playlisteditor
         [STAThread]
         static void Main()
         {
+
+            //HINT:Replace this by using Nuget Package AutoFac!!
             var playlistFactory = new PlaylistFactory();
             var playlistItemFactory = new PlaylistItemFactory();
-            var playlistRepositoryFactory = new RepositoryFactory(playlistFactory,
-                                                                                        playlistItemFactory);
+            var playlistRepositoryFactory = new RepositoryFactory(playlistFactory,playlistItemFactory);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
