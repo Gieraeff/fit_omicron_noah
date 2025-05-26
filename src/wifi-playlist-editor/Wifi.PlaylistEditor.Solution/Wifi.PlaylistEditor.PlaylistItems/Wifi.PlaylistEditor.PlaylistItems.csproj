@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4DF1F007-6A83-4FDE-8361-0AD44AA082B7}</ProjectGuid>
+    <ProjectGuid>{A69ADA07-7669-495C-AEDC-445BB0264944}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wifi.PlaylistEditor.Core.PlaylistItems</RootNamespace>
-    <AssemblyName>Wifi.PlaylistEditor.Core.PlaylistItems</AssemblyName>
+    <RootNamespace>Wifi.PlaylistEditor.PlaylistItems</RootNamespace>
+    <AssemblyName>Wifi.PlaylistEditor.PlaylistItems</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
